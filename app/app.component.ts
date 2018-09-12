@@ -5,6 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  title = 'asignacionsubsidio';
+export class AppComponent { 
+
+    data:any = {};
+    enlaces:any = {};
+    footer:any = {};
+    legales:any = {};
+    portales:any = {};
+    filiales:any = {};
+    vigilado:any = {};
+
 }

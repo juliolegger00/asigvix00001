@@ -1,20 +1,234 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
 
+  <!-- ejemplo header -->
+	<header>
+    <div class="desktop-v hide-for-small show-for-large">
+      <div class="upper-selector">
+      </div>
+      <section class="top-container">
+        <div class="content-limit">
+          <div class="left-container">
+            <div class="logo">
+              <a href="https://www.colsubsidio.com">
+                <img src="https://www.colsubsidio.com/images/logo.png" alt="Logo Colsubsidio">
+              </a>
+            </div>
+            <div class="links-container">
+                <ul class="menu">
+                  <li class="active"><a href="https://www.colsubsidio.com" id="menuAfiliados">Para afiliados</a></li>
+                  <li><a href="https://www.colsubsidio.com/empresas" id="menuEmpresas">Para empresas</a></li>
+                </ul>
+            </div>
+          </div>
+          <div class="search-form-container">
+            <div class="has-form">
+              <form id="searchForm" action="https://www.colsubsidio.com/afiliados/busqueda/" method="GET" onsubmit="location.href ='https://www.colsubsidio.com/afiliados/busqueda/' + encodeURIComponent(this.q.value.replace(/[^\w\s]/gi,'a')) + '/pagina/1'; return false;">
+                <div class="search-input-container">
+                  <input id="ipt-keywords" class="search" name="q" type="text" placeholder="Buscar">
+                  <input name="tipo" type="hidden" value="afiliados">
+                </div>
+                <div class="search-button-container">
+                  <input id="btn-search" class="search-btn" type="submit" value="Search">
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="right-container">
+            <div class="links-container">
+              <ul class="menu">
+                <li><a href="https://www.colsubsidio.com/afiliados/quienes-somos">Quiénes somos</a></li>
+                <li><a href="https://www.colsubsidio.com/afiliados/servicio-al-cliente">Servicio al cliente</a></li>
+              </ul>
+            </div>
+            <div class="share-container">
+              <div class="social-container">
+                <ul class="social-share">
+                  <?php foreach($enlaces as $enlace):?>
+                    <li>
+                      <a href="<?= $enlace->enlace_externo; ?>" target="<?= ($link->enlace_interno)? '_self' : '_blank' ; ?>"><img src="<?= $enlace->icono; ?>" alt="<?= $enlace->nombre_red; ?>"></a>
+                    </li>
+                  <?php endforeach;?>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="mobile-v hide-for-large show-for-small">
+      <div class="row align-justify align-middle">
+        <div id="mobile-menu-trigger" class="trigger-mobile-menu columns">
+            <div class="icon-mobile"></div>
+        </div>
+        <div class="logo columns align-middle">
+          <a href="https://www.colsubsidio.com">
+            <img src="https://www.colsubsidio.com/images/logo.png" alt="Logo Colsubsidio">
+          </a>
+        </div>
+        <div id="trigger-mobile-search" class="trigger-mobile-search columns">
+            <div class="icon-mobile"></div>
+        </div>
+      </div>
+
+      <div id="mobile-search" class="mobile-search row">
+        <div class="columns align-middle">
+          <form id="searchForm" action="https://www.colsubsidio.com/afiliados/busqueda/" method="GET" onsubmit="location.href ='https://www.colsubsidio.com/afiliados/busqueda/' + encodeURIComponent(this.q.value.replace(/[^\w\s]/gi,'a')) + '/pagina/1'; return false;">
+            <div class="search-input-container">
+              <input id="ipt-keywordsMobile" class="search" name="q" type="text" placeholder="Buscar">
+              <input name="tipo" type="hidden" value="afiliados">
+            </div>
+            <div class="search-button-container">
+              <input id="btn-search" class="search-btn" type="submit" value="Buscar">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- fin ejemplo header-->
+
+  <!-------------------------- CONTENIDO AQUÍ --------------------->
+
+  <!-- ejemplo footer -->
+  <footer>
+    <div class="separation-line"></div>
+    <div class="grey_bg">
+      <div class="row">
+        <div class="large-12 columns">
+          <div class="row blue_line align-center">
+            <ul class="buttons_top">
+
+              <?php foreach($data->footer->bloque_1 as $bloque):?>
+                <li class="btn_footer">
+
+                  <?php if($bloque->tiene_enlace == 'interno'):?>
+
+                  <a href="<?= $bloque->enlace_interno->post_name; ?>" target="_self" class="btn_f">
+                    <div class="icon">
+                      <span class="triangle"></span>
+                      <div class="icon-container">
+                        <img src="<?= $bloque->icono; ?>" alt="">
+                      </div>
+                    </div>
+                    <div class="title"><?= $bloque->enlace_interno->post_title; ?></div>
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+
+                  <?php else:?>
+
+                  <a href="<?= $bloque->enlace_externo ?>" target="_blank" class="btn_f">
+                    <div class="icon">
+                      <span class="triangle"></span>
+                      <div class="icon-container">
+                        <img src="<?= $bloque->icono; ?>" alt="">
+                      </div>
+                    </div>
+                    <div class="title"><?= $bloque->titulo; ?></div>
+                    <i class="fa fa-angle-right"></i>
+                  </a>
+
+                  <?php endif;?>
+
+                </li>
+              <?php endforeach;?>
+
+            </ul>
+          </div>
+
+          <div class="row menu_footer">
+            <div class="large-3 medium-3 small-12 columns menu_col first-column-container">
+              <h5>Legales</h5>
+              <ul class="mf_inner">
+                <?php foreach($legales as $link):?>
+                  <li>
+                    <?php if($link->tiene_enlace == 'externo'):?>
+                      <a href="<?= $link->enlace_externo; ?>" target="_blank"><?= $link->titulo; ?></a>
+                    <?php else:?>
+                      <a href="<?= $link->enlace_interno; ?>" target="_self"><?= $link->titulo; ?></a>
+                    <?php endif;?>
+                  </li>
+                <?php endforeach;?>
+
+              </ul>
+            </div>
+
+            <div class="large-6 medium-6 small-12 columns menu_col second-column-container">
+              <h5>Nuestros portales</h5>
+              <ul class="mf_inner">
+                <?php foreach($portales as $portal):?>
+                  <li>
+                    <?php if($portal->tiene_enlace == 'externo'):?>
+                      <a href="<?= $portal->enlace_externo ?>" target="_blank"><?= $portal->titulo; ?></a>
+                    <?php else:?>
+                      <a href="<?= $portal->enlace_interno ?>" target="_self"><?= $portal->titulo; ?></a>
+                    <?php endif;?>
+                  </li>
+                <?php endforeach;?>
+              </ul>
+            </div>
+
+            <div class="large-3 medium-3 small-12 columns menu_col">
+              <h5>Nuestras redes</h5>
+              <ul class="small-12 columns end social">
+
+                <?php foreach($enlaces as $link):?>
+                  <li>
+                    <a href="<?= $link->enlace_externo ?>" target="<?= ($link->enlace_interno)? '_self' : '_blank' ; ?>"><img src="<?= $link->icono ?>" alt="<?= $link->nombre_red ?>"></a>
+                  </li>
+                <?php endforeach;?>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="filiales">
+      <div class="section-title">Filiales</div>
+
+      <?php foreach($filiales as $filial):?>
+        <div class="logo_footer">
+          <?php if($filial->tiene_enlace == 'externo'):?>
+            <a href="<?= $filial->enlace_externo ?>" target="_blank">
+              <img src="<?= $filial->icono ?>" alt="<?= $filial->nombre ?>">
+            </a>
+          <?php else:?>
+            <a href="<?= $filial->enlace_interno ?>" target="_self">
+              <img src="<?= $filial->icono ?>" alt="<?= $filial->nombre ?>">
+            </a>
+          <?php endif;?>
+        </div>
+      <?php endforeach;?>
+
+    </div>
+
+    <div class="copy">
+      <div class="row align-center">
+        <div class="small-12 medium-6 columns logos-footer">
+
+          <?php
+          foreach($vigilado as $item):
+            if($item->tiene_enlace == 'externo'):
+            ?>
+            <a href="<?= $item->enlace_externo ?>" target="_blank">
+              <img src="<?= $item->icono ?>" alt="">
+            </a>
+            <?php else:?>
+            <a href="<?= $item->enlace_interno ?>" target="_self">
+              <img src="<?= $item->icono ?>" alt="">
+            </a>
+          <?php
+            endif;
+          endforeach;
+          ?>
+
+        </div>
+        <div class="small-12 medium-6 columns copyright">
+            <span><?= $footer->copyright ?></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- fin ejemplo footer-->
+ 
