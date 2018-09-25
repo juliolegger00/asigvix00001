@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject, of } from 'rxjs';
 import {delay } from 'rxjs/internal/operators/delay';
 import { take  } from 'rxjs/operators';
 import {OnInit } from "@angular/core";
+import {CONFIG } from "./config/config";
 
 @Component({
   selector: 'app-root',
@@ -49,7 +50,7 @@ export class AppComponent implements OnInit {
     }
 
     public initializeData() {
-      this.http.get("http://192.168.102.10/asignacionvivienda/index.php" ).pipe(delay(0)).subscribe(datax => {
+      this.http.get(CONFIG.dominio_plantilla ).pipe(delay(0)).subscribe(datax => {
 
           let data_tmp: any = {};
           let data_tmp_enlaces: any = {};

@@ -1,0 +1,41 @@
+
+<ng-container *ngIf="!mensaje_listo">
+	<div class="container">
+
+		<div class="row">
+		  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+		    <div class="form-bus">
+			  	<form   (ngSubmit)="onSubmit_paso1()"  >
+
+						<div class="col-sm-12 col-md-4 col-lg-4">
+			        <div class="form-group" [formGroup]="regFormPaso1">
+			          <label>Cedula</label>
+			          <input type="text" formControlName="fs_cedula_campo" class="form-control"
+			                 [ngClass]="{ 'is-invalid': submitted1 && f.fs_cedula_campo.errors }" />
+			          <div *ngIf="submitted1 && f.fs_cedula_campo.errors" class="invalid-feedback">
+			            <div *ngIf="f.fs_cedula_campo.errors.required">Campo necesario</div>
+			          </div>
+			        </div>
+			      </div>
+
+
+		      		<button type="submit"
+	            class="btn form-btn">
+	             <span class="text">Consulta aquí</span> <span class="icon"></span>
+	            </button>
+
+		      </form>
+		    </div>
+		    <div style="clear:both; padding:4px;"></div>
+		  </div>
+		</div>
+
+	</div>
+  </ng-container>
+
+<ng-container *ngIf="mensaje_listo">
+	<div [innerHTML]="mensajes"></div>
+	<button (click)="nuevaconsulta()" class="form-btn" type="button">
+			<span class="text">Nueva Consulta</span>
+	</button>
+</ng-container>
