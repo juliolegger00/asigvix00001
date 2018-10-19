@@ -43,8 +43,7 @@ export class GetsubsidioComponent implements OnInit {
 
     public nuevaconsulta() {
       this.submitted1 = false;
-      this.mensaje_listo=false;
-      this.f.fs_cedula_campo.value="";
+      this.mensaje_listo=false; 
 
     }
 

@@ -36,7 +36,14 @@ export class AppComponent implements OnInit {
   vigilado_obsArray: BehaviorSubject < any[] > = new BehaviorSubject < any[] > ([]);
   vigilado$: Observable < any > = this.vigilado_obsArray.asObservable();
 
+  menu_obsArray: BehaviorSubject < any[] > = new BehaviorSubject < any[] > ([]);
+  menu$: Observable < any > = this.menu_obsArray.asObservable();
+
+  url_transacciones_obsArray: BehaviorSubject < any[] > = new BehaviorSubject < any[] > ([]);
+  url_transacciones$: Observable < any > = this.url_transacciones_obsArray.asObservable();
+
   copyright:any;
+  titulo_transacciones:any;
 
 
     constructor(
@@ -60,7 +67,13 @@ export class AppComponent implements OnInit {
           let data_tmp_portales: any = {};
           let data_tmp_filiales: any = {};
           let data_tmp_vigilado: any = {};
+          let data_tmp_menu: any = {};
+          let data_tmp_url_transacciones: any = {};
           data_tmp = datax;
+
+
+          this.copyright=data_tmp.footer.copyright;
+          this.titulo_transacciones=data_tmp.titulo_transacciones;
 
           data_tmp_enlaces=data_tmp.footer.nuestras_redes[0].enlaces;
           data_tmp_enlaces.forEach((item, index) => {
@@ -73,7 +86,6 @@ export class AppComponent implements OnInit {
               this.addElementToObservableArray_footer(item);
           });
           */
-          this.copyright=data_tmp.footer.copyright;
 
           data_tmp_footer_bloque_1=data_tmp.footer.bloque_1;
           data_tmp_footer_bloque_1.forEach((item, index) => {
@@ -100,11 +112,36 @@ export class AppComponent implements OnInit {
               this.addElementToObservableArray_vigilado(item);
           });
 
+          data_tmp_menu=data_tmp.menu;
+          data_tmp_menu.forEach((item, index) => {
+              this.addElementToObservableArray_menu(item);
+          });
+
+          data_tmp_url_transacciones=data_tmp.url_transacciones;
+          data_tmp_url_transacciones.forEach((item, index) => {
+              this.addElementToObservableArray_url_transacciones(item);
+          });
+
 
         });
 
     }//initializeData
 
+
+
+    addElementToObservableArray_url_transacciones(item) {
+        this.url_transacciones$.pipe(take(1)).subscribe(val => {
+            const newArr = [...val, item];
+            this.url_transacciones_obsArray.next(newArr);
+        })
+    }
+
+    addElementToObservableArray_menu(item) {
+        this.menu$.pipe(take(1)).subscribe(val => {
+            const newArr = [...val, item];
+            this.menu_obsArray.next(newArr);
+        })
+    }
 
     addElementToObservableArray_enlaces(item) {
         this.enlaces$.pipe(take(1)).subscribe(val => {

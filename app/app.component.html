@@ -54,6 +54,84 @@
           </div>
         </div>
       </section>
+
+
+
+
+
+			      <section class="row menu-container menu-centered">
+			        <ul class="dropdown menu main-level-menu" data-dropdown-menu>
+
+			          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-haspopup="true" aria-expanded="false"	aria-label="{{titulo_transacciones}}" data-is-click="false">
+			            <a tabindex="0" style="text-transform: uppercase;">{{titulo_transacciones}}</a>
+			            <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu" style="">
+										<li *ngFor="let trans of (url_transacciones$ | async)"  role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+			                <a href="{{trans.enlace_externo}}" target="_blank"> {{trans.titulo_item}} </a>
+			              </li>
+			            </ul>
+			          </li>
+
+
+									<li *ngFor="let item of (menu$ | async)"  role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-label="{{item.titulo}}" >
+			              <a href="http://192.168.102.10/afiliados/{{item.post_name}}" style="text-transform: uppercase;">{{item.titulo}}</a>
+
+
+											<ng-container *ngIf="item.hijos.length>0">
+			                <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu" style="">
+
+
+												<ng-container *ngIf="item.hijos.hijos.length>0">
+
+
+														<li *ngFor="let child of (item.hijos)"   role="menuitem" class="is-dropdown-submenu-parent is-submenu-item is-dropdown-submenu-item opens-right" aria-label="{{child.titulo}}">
+			                        <a href="http://192.168.102.10/afiliados/{{item.post_name}}/{{child.post_name}}">
+			                          {{child.titulo}}
+			                        </a>
+			                        <ul class="submenu is-dropdown-submenu vertical" data-submenu="" aria-hidden="true" role="menu">
+
+																<li *ngFor="let sub of (child.hijos )"   role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+			                            <a href="http://192.168.102.10/afiliados/{{item.post_name}}/{{child.post_name}}/{{sub.post_name}}">
+			                              {{sub.titulo}}
+			                            </a>
+			                          </li>
+
+
+			                        </ul>
+			                      </li>
+
+														  </ng-container>
+													<ng-container *ngIf="item.hijos.hijos.length<=0">
+														<li *ngFor="let child of (item.hijos)"   role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
+			                        <a href="http://192.168.102.10/afiliados/{{item.post_name}}/{{child.post_name}}">
+			                          {{child.titulo}}
+			                        </a>
+			                      </li>
+
+												  </ng-container>
+
+
+			                </ul>
+			                </ng-container>
+
+			            </li>
+
+
+			        </ul>
+			      </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
 
 
@@ -87,7 +165,7 @@
 	      </div>
 	    </div>
 	  </header>
-	  <!-- fin ejemplo header--> 
+	  <!-- fin ejemplo header-->
 
 			<router-outlet></router-outlet>
 
