@@ -8,20 +8,20 @@
         <div class="content-limit">
           <div class="left-container">
             <div class="logo">
-              <a href="https://www.colsubsidio.com">
-                <img src="https://www.colsubsidio.com/images/logo.png" alt="Logo Colsubsidio">
+              <a href="http://192.168.102.70">
+                <img src="http://192.168.102.70/images/logo.png" alt="Logo Colsubsidio">
               </a>
             </div>
             <div class="links-container">
                 <ul class="menu">
-                  <li class="active"><a href="https://www.colsubsidio.com" id="menuAfiliados">Para afiliados</a></li>
-                  <li><a href="https://www.colsubsidio.com/empresas" id="menuEmpresas">Para empresas</a></li>
+                  <li class="active"><a href="http://192.168.102.70" id="menuAfiliados">Para afiliados</a></li>
+                  <li><a href="http://192.168.102.70/empresas" id="menuEmpresas">Para empresas</a></li>
                 </ul>
             </div>
           </div>
           <div class="search-form-container">
             <div class="has-form">
-              <form id="searchForm" action="https://www.colsubsidio.com/afiliados/busqueda/" method="GET" onsubmit="location.href ='https://www.colsubsidio.com/afiliados/busqueda/' + encodeURIComponent(this.q.value.replace(/[^\w\s]/gi,'a')) + '/pagina/1'; return false;">
+              <form id="searchForm" action="http://192.168.102.70/afiliados/busqueda/" method="GET" onsubmit="location.href ='http://192.168.102.70/afiliados/busqueda/' + encodeURIComponent(this.q.value.replace(/[^\w\s]/gi,'a')) + '/pagina/1'; return false;">
                 <div class="search-input-container">
                   <input id="ipt-keywords" class="search" name="q" type="text" placeholder="Buscar">
                   <input name="tipo" type="hidden" value="afiliados">
@@ -35,8 +35,8 @@
           <div class="right-container">
             <div class="links-container">
               <ul class="menu">
-                <li><a href="https://www.colsubsidio.com/afiliados/quienes-somos">Quiénes somos</a></li>
-                <li><a href="https://www.colsubsidio.com/afiliados/servicio-al-cliente">Servicio al cliente</a></li>
+                <li><a href="http://192.168.102.70/afiliados/quienes-somos">Quiénes somos</a></li>
+                <li><a href="http://192.168.102.70/afiliados/servicio-al-cliente">Servicio al cliente</a></li>
               </ul>
             </div>
             <div class="share-container">
@@ -60,71 +60,8 @@
 
 
 			      <section class="row menu-container menu-centered">
-			        <ul class="dropdown menu main-level-menu" data-dropdown-menu>
-
-			          <li role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-haspopup="true" aria-expanded="false"	aria-label="{{titulo_transacciones}}" data-is-click="false">
-			            <a tabindex="0" style="text-transform: uppercase;">{{titulo_transacciones}}</a>
-			            <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu" style="">
-										<li *ngFor="let trans of (url_transacciones$ | async)"  role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
-			                <a href="{{trans.enlace_externo}}" target="_blank"> {{trans.titulo_item}} </a>
-			              </li>
-			            </ul>
-			          </li>
-
-
-									<li *ngFor="let item of (menu$ | async)"  role="menuitem" class="is-dropdown-submenu-parent opens-right" aria-label="{{item.titulo}}" >
-			              <a href="http://192.168.102.10/afiliados/{{item.post_name}}" style="text-transform: uppercase;">{{item.titulo}}</a>
-
-
-											<ng-container *ngIf="item.hijos.length>0">
-			                <ul class="menu submenu is-dropdown-submenu first-sub vertical" data-submenu="" aria-hidden="true" role="menu" style="">
-
-
-												<ng-container *ngIf="item.hijos.hijos.length>0">
-
-
-														<li *ngFor="let child of (item.hijos)"   role="menuitem" class="is-dropdown-submenu-parent is-submenu-item is-dropdown-submenu-item opens-right" aria-label="{{child.titulo}}">
-			                        <a href="http://192.168.102.10/afiliados/{{item.post_name}}/{{child.post_name}}">
-			                          {{child.titulo}}
-			                        </a>
-			                        <ul class="submenu is-dropdown-submenu vertical" data-submenu="" aria-hidden="true" role="menu">
-
-																<li *ngFor="let sub of (child.hijos )"   role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
-			                            <a href="http://192.168.102.10/afiliados/{{item.post_name}}/{{child.post_name}}/{{sub.post_name}}">
-			                              {{sub.titulo}}
-			                            </a>
-			                          </li>
-
-
-			                        </ul>
-			                      </li>
-
-														  </ng-container>
-													<ng-container *ngIf="item.hijos.hijos.length<=0">
-														<li *ngFor="let child of (item.hijos)"   role="menuitem" class="is-submenu-item is-dropdown-submenu-item">
-			                        <a href="http://192.168.102.10/afiliados/{{item.post_name}}/{{child.post_name}}">
-			                          {{child.titulo}}
-			                        </a>
-			                      </li>
-
-												  </ng-container>
-
-
-			                </ul>
-			                </ng-container>
-
-			            </li>
-
-
-			        </ul>
+							  <div [innerHTML]="menu_genera"></div>
 			      </section>
-
-
-
-
-
-
-
 
 
 
@@ -141,8 +78,8 @@
 	            <div class="icon-mobile"></div>
 	        </div>
 	        <div class="logo columns align-middle">
-	          <a href="https://www.colsubsidio.com">
-	            <img src="https://www.colsubsidio.com/images/logo.png" alt="Logo Colsubsidio">
+	          <a href="http://192.168.102.70">
+	            <img src="http://192.168.102.70/images/logo.png" alt="Logo Colsubsidio">
 	          </a>
 	        </div>
 	        <div id="trigger-mobile-search" class="trigger-mobile-search columns">
@@ -152,7 +89,7 @@
 
 	      <div id="mobile-search" class="mobile-search row">
 	        <div class="columns align-middle">
-	          <form id="searchForm" action="https://www.colsubsidio.com/afiliados/busqueda/" method="GET" onsubmit="location.href ='https://www.colsubsidio.com/afiliados/busqueda/' + encodeURIComponent(this.q.value.replace(/[^\w\s]/gi,'a')) + '/pagina/1'; return false;">
+	          <form id="searchForm" action="http://192.168.102.70/afiliados/busqueda/" method="GET" onsubmit="location.href ='http://192.168.102.70/afiliados/busqueda/' + encodeURIComponent(this.q.value.replace(/[^\w\s]/gi,'a')) + '/pagina/1'; return false;">
 	            <div class="search-input-container">
 	              <input id="ipt-keywordsMobile" class="search" name="q" type="text" placeholder="Buscar">
 	              <input name="tipo" type="hidden" value="afiliados">

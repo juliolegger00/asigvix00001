@@ -44,6 +44,8 @@ export class AppComponent implements OnInit {
 
   copyright:any;
   titulo_transacciones:any;
+  menu_genera:any;
+  root_httpx=  "http://192.168.102.70";
 
 
     constructor(
@@ -57,6 +59,7 @@ export class AppComponent implements OnInit {
     }
 
     public initializeData() {
+
       this.http.get(CONFIG.dominio_plantilla ).pipe(delay(0)).subscribe(datax => {
 
           let data_tmp: any = {};
@@ -112,10 +115,10 @@ export class AppComponent implements OnInit {
               this.addElementToObservableArray_vigilado(item);
           });
 
-          data_tmp_menu=data_tmp.menu;
+          /*data_tmp_menu=data_tmp.menu;
           data_tmp_menu.forEach((item, index) => {
               this.addElementToObservableArray_menu(item);
-          });
+          });*/
 
           data_tmp_url_transacciones=data_tmp.url_transacciones;
           data_tmp_url_transacciones.forEach((item, index) => {
@@ -124,6 +127,30 @@ export class AppComponent implements OnInit {
 
 
         });
+
+
+
+
+
+          this.http.get(CONFIG.dominio_plantilla_menu ).pipe(delay(0)).subscribe(datax => {
+
+              let data_tmp2: any = {};
+              data_tmp2 = datax;
+
+              //console.log('menu' + data_tmp2.render);
+              //debugger
+              this.menu_genera= data_tmp2.render;
+
+          });
+
+
+
+
+
+
+
+
+
 
     }//initializeData
 
